@@ -1,0 +1,20 @@
+//GENERATE 10000 STUDENTS DATA AND SAVE IT INTO JSON FILE
+const faker = require('Faker');
+const fse=require('fs-extra');
+const fs=require('fs');
+const students = [];
+for(i=1;i<=10000;i++){
+    const student={
+        "id":i,
+        "firstname":faker.Name.firstName(),
+        "lastnaname": faker.Name.lastName()
+    }
+    students.push(student);
+}
+fse.outputJson('students.json',students,(err) => {
+    if (err) {
+      console.error(err);
+    } else {
+      console.log('Students file written successfully');
+    }
+});
